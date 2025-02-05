@@ -61,7 +61,6 @@ class Configuration {
     // Upload the artifact
     this.uploadArtifact = core.getBooleanInput('upload-artifact')
     this.disableRoFilesFuse = core.getBooleanInput('disable-rofiles-fuse')
-
   }
 
   async cacheKey () {
