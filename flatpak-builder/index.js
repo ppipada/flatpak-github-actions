@@ -225,7 +225,8 @@ const build = async (manifest, manifestPath, cacheHitKey, config) => {
     `--install-deps-from=${config.repositoryName}`,
     '--force-clean',
     `--default-branch=${branch}`,
-    `--arch=${config.arch}`
+    `--arch=${config.arch}`,
+    '-vv'
   ]
   if (config.disableRoFilesFuse) {
     args.push('--disable-rofiles-fuse')

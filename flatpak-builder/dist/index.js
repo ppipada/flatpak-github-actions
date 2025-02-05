@@ -227,10 +227,12 @@ const build = async (manifest, manifestPath, cacheHitKey, config) => {
 
   const args = [
     `--repo=${config.localRepoName}`,
+    '--user',
     `--install-deps-from=${config.repositoryName}`,
     '--force-clean',
     `--default-branch=${branch}`,
-    `--arch=${config.arch}`
+    `--arch=${config.arch}`,
+    '-vv'
   ]
   if (config.disableRoFilesFuse) {
     args.push('--disable-rofiles-fuse')
