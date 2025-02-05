@@ -60,6 +60,8 @@ class Configuration {
     this.verbose = core.getBooleanInput('verbose')
     // Upload the artifact
     this.uploadArtifact = core.getBooleanInput('upload-artifact')
+    this.disableRoFilesFuse = core.getBooleanInput('disable-rofiles-fuse')
+
   }
 
   async cacheKey () {
@@ -220,12 +222,14 @@ const build = async (manifest, manifestPath, cacheHitKey, config) => {
 
   const args = [
     `--repo=${config.localRepoName}`,
-    '--disable-rofiles-fuse',
     `--install-deps-from=${config.repositoryName}`,
     '--force-clean',
     `--default-branch=${branch}`,
     `--arch=${config.arch}`
   ]
+  if (config.disableRoFilesFuse) {
+    args.push('--disable-rofiles-fuse')
+  }
   if (config.cacheBuildDir) {
     args.push('--ccache')
   }
