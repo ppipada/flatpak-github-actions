@@ -221,6 +221,7 @@ const build = async (manifest, manifestPath, cacheHitKey, config) => {
 
   const args = [
     `--repo=${config.localRepoName}`,
+    '--user',
     `--install-deps-from=${config.repositoryName}`,
     '--force-clean',
     `--default-branch=${branch}`,
