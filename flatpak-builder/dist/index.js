@@ -224,7 +224,8 @@ const build = async (manifest, manifestPath, cacheHitKey, config) => {
   if (config.cacheBuildDir) { cacheKey = await config.cacheKey() }
 
   core.info('Building the flatpak...')
-
+  await exec.exec('flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo')
+  await exec.exec(`flatpak remote-add --if-not-exists ${config.repositoryName} ${config.repositoryUrl}`)
   const args = [
     `--repo=${config.localRepoName}`,
     '--user',
